@@ -1,0 +1,15 @@
+{
+  "name": "root-facts-app",
+  "version": "1.0.0",
+  "description": "RootFacts — Vegetable Detection & Fun Facts via AI",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx -y serve .",
+    "lint": "eslint \"assets/js/**/*.js\" --max-warnings=0",
+    "lint:fix": "eslint \"assets/js/**/*.js\" --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1"
+  }
+}

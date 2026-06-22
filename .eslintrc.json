@@ -1,0 +1,44 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "serviceworker": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "globals": {
+    "tmImage": "readonly",
+    "tf": "readonly",
+    "lucide": "readonly",
+    "workbox": "readonly"
+  },
+  "rules": {
+    /* ── Possible Errors ── */
+    "no-console":           "off",
+    "no-unused-vars":       ["warn", { "argsIgnorePattern": "^_" }],
+    "no-undef":             "error",
+
+    /* ── Best Practices ── */
+    "eqeqeq":               ["error", "always"],
+    "no-eval":              "error",
+    "no-var":               "error",
+    "prefer-const":         ["error", { "destructuring": "any" }],
+
+    /* ── Code Style ── */
+    "semi":                 ["error", "always"],
+    "quotes":               ["error", "single", { "avoidEscape": true }],
+    "indent":               ["error", "tab", { "SwitchCase": 1 }],
+    "comma-dangle":         ["error", "always-multiline"],
+    "arrow-spacing":        ["error", { "before": true, "after": true }],
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    "keyword-spacing":      ["error", { "before": true, "after": true }],
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing":["error", "never"]
+  }
+}
