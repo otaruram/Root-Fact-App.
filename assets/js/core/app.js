@@ -302,7 +302,7 @@ class RootFactsApp {
 				);
 			} else {
 				// Graceful fallback if the NLP model is still loading
-				funFact = `${detectionResult.className} adalah sayuran bergizi yang kaya akan vitamin dan mineral penting untuk kesehatan tubuh.`;
+				funFact = `${detectionResult.className} is a nutritious vegetable rich in essential vitamins and minerals that are important for a healthy body.`;
 			}
 
 			this.currentFunFact = funFact;

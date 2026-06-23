@@ -22,18 +22,24 @@ const { ExpirationPlugin }                         = workbox.expiration;
 // ── Precache core shell assets ─────────────────────────────────────────────
 // Revision strings ensure the SW detects changes on each deploy.
 precacheAndRoute([
-  { url: '/',             revision: '1' },
-  { url: '/index.html',  revision: '1' },
-  { url: '/assets/css/styles.css',               revision: '1' },
-  { url: '/assets/js/core/app.js',               revision: '1' },
-  { url: '/assets/js/core/config.js',            revision: '1' },
-  { url: '/assets/js/core/utils.js',             revision: '1' },
-  { url: '/assets/js/services/camera.service.js',    revision: '1' },
-  { url: '/assets/js/services/detection.service.js', revision: '1' },
-  { url: '/assets/js/services/facts.service.js',     revision: '1' },
-  { url: '/assets/js/ui/ui.handler.js',          revision: '1' },
-  { url: '/manifest.json',                       revision: '1' },
-  { url: '/model/metadata.json',                 revision: '1' },
+  { url: '/',             revision: '2' },
+  { url: '/index.html',  revision: '2' },
+  { url: '/assets/css/styles.css',               revision: '2' },
+  { url: '/assets/js/core/app.js',               revision: '2' },
+  { url: '/assets/js/core/config.js',            revision: '2' },
+  { url: '/assets/js/core/utils.js',             revision: '2' },
+  { url: '/assets/js/services/camera.service.js',    revision: '2' },
+  { url: '/assets/js/services/detection.service.js', revision: '2' },
+  { url: '/assets/js/services/facts.service.js',     revision: '2' },
+  { url: '/assets/js/ui/ui.handler.js',          revision: '2' },
+  { url: '/manifest.json',                       revision: '2' },
+  { url: '/model/metadata.json',                 revision: '2' },
+  { url: '/model/model.json',                    revision: '2' },
+  { url: '/model/weights.bin',                   revision: '2' },
+  { url: '/assets/icons/icon-192x192.png',       revision: '1' },
+  { url: '/assets/icons/icon-512x512.png',       revision: '1' },
+  { url: '/assets/icons/apple-touch-icon.png',   revision: '1' },
+  { url: '/assets/icons/favicon.ico',            revision: '1' },
 ]);
 
 cleanupOutdatedCaches();
@@ -87,6 +93,19 @@ registerRoute(
     plugins: [
       new CacheableResponsePlugin({ statuses: [0, 200] }),
       new ExpirationPlugin({ maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 30 }),
+    ],
+  })
+);
+
+// ── Hugging Face model files (Transformers.js ONNX models) ────────────────
+registerRoute(
+  ({ url }) =>
+    url.origin.includes('huggingface.co'),
+  new CacheFirst({
+    cacheName: 'rootfacts-hf-models-v1',
+    plugins: [
+      new CacheableResponsePlugin({ statuses: [0, 200] }),
+      new ExpirationPlugin({ maxEntries: 20, maxAgeSeconds: 30 * 24 * 60 * 60 }),
     ],
   })
 );
