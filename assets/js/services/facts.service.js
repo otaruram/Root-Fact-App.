@@ -79,14 +79,14 @@ class FunFactService {
 		}
 
 		// --- Tone-specific prompt suffix ---
-		const toneSuffix = {
-			normal:       'Here is an interesting fact:',
-			funny:        'Here is a hilarious and surprising fact:',
-			professional: 'According to nutritional science, an important fact is:',
-			casual:       'Fun thing to know:',
-		}[tone] || 'Here is an interesting fact:';
+		const toneDescriptor = {
+			normal:       'informative',
+			funny:        'funny and surprising',
+			professional: 'scientific and professional',
+			casual:       'casual and friendly',
+		}[tone] || 'informative';
 
-		const prompt = `${sanitized} is a vegetable. ${toneSuffix}`;
+		const prompt = `Describe ${sanitized} in a ${toneDescriptor} way:`;
 
 		try {
 			this.isGenerating = true;
