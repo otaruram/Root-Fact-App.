@@ -25,7 +25,7 @@ class DetectionService {
 			const metadata     = await metadataRes.json();
 
 			if (!validateModelMetadata(metadata)) {
-				throw new Error('metadata.json tidak valid atau tidak memiliki properti labels');
+				throw new Error('metadata.json is invalid or missing labels property');
 			}
 
 			this.labels = metadata.labels;
@@ -70,7 +70,7 @@ class DetectionService {
 			};
 		} catch (error) {
 			logError('Prediction error', error);
-			throw new Error(`Prediksi gagal: ${error.message}`);
+			throw new Error(`Prediction failed: ${error.message}`);
 		} finally {
 			// tmImage.predict() internally uses TF tensors; calling tf.dispose
 			// on any lingering tensors keeps memory clean.

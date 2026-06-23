@@ -1,14 +1,14 @@
 {
-  "name": "RootFacts: Fakta Unik Sayuran AI",
+  "name": "RootFacts: AI Vegetable Fun Facts",
   "short_name": "RootFacts",
-  "description": "Kenali berbagai jenis sayuran melalui kamera dan temukan fakta menarik secara instan dengan bantuan kecerdasan buatan.",
+  "description": "Identify various vegetables using your camera and discover interesting facts instantly with the help of artificial intelligence.",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#0b1120",
   "theme_color": "#34d399",
-  "lang": "id",
+  "lang": "en",
   "categories": ["education", "lifestyle"],
   "icons": [
     {

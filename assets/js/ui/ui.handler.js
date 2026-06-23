@@ -112,7 +112,7 @@ class UIHandler {
 			this.btnToggleIcon.innerHTML = '<i data-lucide="scan-line" width="24" height="24"></i>';
 			if (this.cameraOverlay) this.cameraOverlay.classList.remove('active');
 			if (this.cameraPlaceholder) showElement(this.cameraPlaceholder);
-			this.updateHeaderStatus('Siap', false);
+			this.updateHeaderStatus('Ready', false);
 		}
 
 		if (typeof lucide !== 'undefined') {
@@ -141,7 +141,7 @@ class UIHandler {
 		}
 	}
 
-	disableButton(_reason = 'Memuat...') {
+	disableButton(_reason = 'Loading...') {
 		if (this.btnToggle) {
 			this.btnToggle.disabled = true;
 			this.btnToggle.style.opacity = '0.6';
@@ -198,7 +198,7 @@ class UIHandler {
 				hideElement(this.funFactLoading);
 				showElement(this.funFactContent);
 				if (this.funFactText) {
-					setElementText(this.funFactText, 'Fakta tidak tersedia');
+					setElementText(this.funFactText, 'Fact unavailable');
 				}
 				break;
 		}
@@ -239,7 +239,7 @@ class UIHandler {
 		setTimeout(() => {
 			this.updateCameraUI(false);
 			this.switchToState('idle');
-			this.updateHeaderStatus('Siap', false);
+			this.updateHeaderStatus('Ready', false);
 		}, 3000);
 	}
 

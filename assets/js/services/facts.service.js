@@ -61,11 +61,11 @@ class FunFactService {
    */
 	async generateFunFact(vegetable, tone = 'normal') {
 		if (!this.isModelLoaded || this.isGenerating) {
-			throw new Error('Model belum siap atau sedang menghasilkan fakta');
+			throw new Error('Model not ready or currently generating fact');
 		}
 
 		if (!vegetable || typeof vegetable !== 'string') {
-			throw new Error('Nama sayuran yang valid diperlukan');
+			throw new Error('A valid vegetable name is required');
 		}
 
 		// --- Input validation & sanitization (prompt-injection guard) ---
@@ -75,7 +75,7 @@ class FunFactService {
 		sanitized = sanitized.replace(/[^a-zA-Z\s\-]/g, '');
 
 		if (!sanitized) {
-			throw new Error('Nama sayuran tidak valid setelah sanitasi');
+			throw new Error('Vegetable name is invalid after sanitization');
 		}
 
 		// --- Tone-specific prompt suffix ---

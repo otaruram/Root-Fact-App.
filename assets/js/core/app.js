@@ -69,7 +69,7 @@ class RootFactsApp {
 	async init() {
 		try {
 			// Show "Menunggu Model..." overlay and update header status
-			this.ui.updateHeaderStatus('Memuat model...', false);
+			this.ui.updateHeaderStatus('Loading model...', false);
 			this._showModelLoadingOverlay(true);
 
 			// Initialise services
@@ -89,16 +89,16 @@ class RootFactsApp {
 			this._showModelLoadingOverlay(false);
 
 			// [Skilled] Update header to "Siap" once both are loaded
-			this.ui.updateHeaderStatus('Siap', false);
+			this.ui.updateHeaderStatus('Ready', false);
 			this.ui.enableButton();
 		} catch (error) {
-			logError('Gagal menginisialisasi aplikasi', error);
+			logError('Failed to initialize application', error);
 
 			this._showModelLoadingOverlay(false);
 
 			// [Skilled] Show error in header if init fails
 			this.ui.updateHeaderStatus('Error', false);
-			this.ui.showError(`Gagal menginisialisasi: ${error.message}`);
+			this.ui.showError(`Failed to initialize: ${error.message}`);
 			this.ui.disableButton();
 		}
 	}
@@ -308,7 +308,7 @@ class RootFactsApp {
 			this.currentFunFact = funFact;
 			this.ui.updateFunFactState('success', { funFact });
 		} catch (error) {
-			logError('Gagal menampilkan hasil', error);
+			logError('Failed to display results', error);
 			this.ui.updateFunFactState('error');
 		}
 	}

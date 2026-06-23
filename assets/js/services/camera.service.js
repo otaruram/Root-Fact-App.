@@ -57,7 +57,7 @@ class CameraService {
 				});
 			}
 		} catch (error) {
-			logError('Gagal memuat kamera', error);
+			logError('Failed to load camera', error);
 			// Non-fatal: fall back to default constraints
 		}
 	}
@@ -102,7 +102,7 @@ class CameraService {
 				await this.video.play();
 			}
 		} catch (error) {
-			logError('Gagal memulai kamera', error);
+			logError('Failed to start camera', error);
 			const errorMessage = getCameraErrorMessage(error);
 			throw new Error(errorMessage);
 		}

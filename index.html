@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<title>RootFacts - Fakta Unik Sayuran AI</title>
+	<title>RootFacts - AI Vegetable Fun Facts</title>
 
-	<meta name="description" content="Kenali berbagai jenis sayuran melalui kamera dan temukan fakta menarik secara instan dengan bantuan kecerdasan buatan.">
+	<meta name="description" content="Identify various vegetables using your camera and discover interesting facts instantly with the help of artificial intelligence.">
 	<meta name="theme-color" content="#34d399">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="apple-mobile-web-app-title" content="RootFacts">
 
 	<!-- Open Graph / SEO -->
-	<meta property="og:title" content="RootFacts - Fakta Unik Sayuran AI">
-	<meta property="og:description" content="Kenali berbagai jenis sayuran melalui kamera dan temukan fakta menarik secara instan.">
+	<meta property="og:title" content="RootFacts - AI Vegetable Fun Facts">
+	<meta property="og:description" content="Identify various vegetables using your camera and discover interesting facts instantly.">
 	<meta property="og:type" content="website">
 
 	<link rel="manifest" href="manifest.json">
@@ -47,7 +47,7 @@
 				</div>
 				<div id="header-status" class="status-pill">
 					<span class="status-dot"></span>
-					<span>Siap</span>
+					<span>Ready</span>
 				</div>
 			</div>
 		</header>
@@ -63,7 +63,7 @@
 						<!-- Model loading overlay - shown during TF model init -->
 						<div id="model-loading-overlay" class="model-loading-overlay hidden">
 							<div class="model-loading-ring"></div>
-							<span class="model-loading-text">Menunggu Model...</span>
+							<span class="model-loading-text">Waiting for Model...</span>
 						</div>
 
 						<div id="camera-overlay" class="camera-overlay">
@@ -71,12 +71,12 @@
 						</div>
 						<div id="camera-placeholder" class="camera-placeholder">
 							<i data-lucide="camera" width="48" height="48"></i>
-							<p>Kamera tidak aktif</p>
+							<p>Camera inactive</p>
 						</div>
 					</div>
 
 					<div class="camera-controls">
-						<button id="btn-toggle" class="capture-btn" title="Mulai / Hentikan Scan">
+						<button id="btn-toggle" class="capture-btn" title="Start / Stop Scan">
 							<i data-lucide="scan-line" width="24" height="24"></i>
 						</button>
 					</div>
@@ -85,8 +85,8 @@
 						<div class="setting-item">
 							<i data-lucide="camera" width="16" height="16"></i>
 							<select id="camera-select">
-								<option value="default">Belakang</option>
-								<option value="front">Depan</option>
+								<option value="default">Rear</option>
+								<option value="front">Front</option>
 							</select>
 						</div>
 						<div class="setting-item fps-setting">
@@ -97,9 +97,9 @@
 							<i data-lucide="mic" width="16" height="16"></i>
 							<select id="tone-select">
 								<option value="normal" selected>Normal</option>
-								<option value="funny">Lucu</option>
-								<option value="professional">Profesional</option>
-								<option value="casual">Santai</option>
+								<option value="funny">Funny</option>
+								<option value="professional">Professional</option>
+								<option value="casual">Casual</option>
 							</select>
 						</div>
 					</div>
@@ -112,8 +112,8 @@
 					<div class="idle-icon">
 						<i data-lucide="sparkles" width="38" height="38"></i>
 					</div>
-					<h2>Scan Sayuran</h2>
-					<p>Ketuk tombol di bawah untuk memulai dan temukan fakta menarik tentang sayuran!</p>
+					<h2>Scan Vegetable</h2>
+					<p>Tap the button below to start and discover interesting facts about vegetables!</p>
 				</div>
 
 				<div id="state-loading" class="result-card loading-card hidden">
@@ -123,15 +123,15 @@
 							<i data-lucide="search" width="22" height="22"></i>
 						</div>
 					</div>
-					<h2>Mencari...</h2>
-					<p>Sedang mengidentifikasi sayuran Anda</p>
+					<h2>Searching...</h2>
+					<p>Identifying your vegetable</p>
 				</div>
 
 				<div id="state-result" class="result-card result-main hidden">
 
 					<div class="detected-badge">
 						<i data-lucide="check-circle" width="13" height="13"></i>
-						<span id="detected-name">Sayuran</span>
+						<span id="detected-name">Vegetable</span>
 					</div>
 
 					<div class="fun-fact-card">
@@ -140,18 +140,18 @@
 						</div>
 						<div id="fun-fact-loading" class="fun-fact-loading hidden">
 							<div class="fun-fact-loading-spinner"></div>
-							<span>Memuat fakta menarik...</span>
+							<span>Loading fun fact...</span>
 						</div>
 						<div id="fun-fact-content">
-							<p id="fun-fact-text" class="fun-fact-text">Fakta menarik akan muncul di sini...</p>
-							<button id="btn-copy" class="copy-btn" title="Salin fakta ke clipboard">
+							<p id="fun-fact-text" class="fun-fact-text">Fun fact will appear here...</p>
+							<button id="btn-copy" class="copy-btn" title="Copy fact to clipboard">
 								<i data-lucide="copy" width="17" height="17"></i>
 							</button>
 						</div>
 					</div>
 
 					<div class="confidence-bar">
-						<span class="confidence-label">Kepercayaan</span>
+						<span class="confidence-label">Confidence</span>
 						<div class="confidence-track">
 							<div id="confidence-fill" class="confidence-fill" style="width: 0%"></div>
 						</div>
@@ -160,7 +160,7 @@
 
 					<div class="share-hint">
 						<i data-lucide="share-2" width="13" height="13"></i>
-						<span>Salin dan bagikan ke teman!</span>
+						<span>Copy and share with friends!</span>
 					</div>
 				</div>
 			</section>

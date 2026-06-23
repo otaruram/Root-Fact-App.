@@ -20,13 +20,13 @@ export const validateModelMetadata = (metadata) => {
 
 export const getCameraErrorMessage = (error) => {
 	if (error.name === 'NotAllowedError') {
-		return 'Izin kamera ditolak. Harap izinkan akses kamera.';
+		return 'Camera permission denied. Please allow camera access.';
 	} else if (error.name === 'NotFoundError') {
-		return 'Tidak ada kamera ditemukan pada perangkat ini.';
+		return 'No camera found on this device.';
 	} else if (error.name === 'NotReadableError') {
-		return 'Kamera sedang digunakan oleh aplikasi lain.';
+		return 'Camera is being used by another application.';
 	}
-	return 'Gagal memulai kamera';
+	return 'Failed to start camera';
 };
 
 export const addFadeInAnimation = (element) => {
